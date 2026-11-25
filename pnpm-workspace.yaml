@@ -1,0 +1,16 @@
+# Supply-chain quarantine: a freshly published version is unavailable to the resolver
+# for 24h (1440 minutes), which is where compromised releases get caught and unpublished.
+# First-party scopes are exempt so our own releases install immediately.
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - '@b2binpay/*'
+
+# esbuild (via tsx and vite/vitest) ships its platform binary as an optional dependency, so
+# the install script it would otherwise run is redundant.
+allowBuilds:
+  esbuild: false
+
+overrides:
+  # tronweb pins axios to exactly 1.18.0, below the fixes for its SSRF, redirect and
+  # header-injection advisories; follow-redirects comes along through axios.
+  axios: '>=1.21.0'
