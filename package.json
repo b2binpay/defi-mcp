@@ -1,0 +1,74 @@
+{
+  "name": "@b2binpay/defi-mcp",
+  "version": "1.0.0",
+  "description": "Local MCP server for the B2BinPay DeFi platform: holds the agent signing key in a local keystore, talks to the backend JSON-RPC /mcp endpoint, and drives multisig operations (propose, sign, execute) end-to-end",
+  "private": false,
+  "license": "MIT",
+  "author": "B2BinPay (https://b2binpay.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b2binpay/defi-mcp.git"
+  },
+  "homepage": "https://github.com/b2binpay/defi-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/b2binpay/defi-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "b2binpay",
+    "defi",
+    "multisig",
+    "web3",
+    "tron"
+  ],
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "bin": {
+    "defi-mcp": "./dist/src/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node ./dist/src/index.js",
+    "dev": "tsx watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check",
+    "lint:fix": "biome check --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e:evm": "tsx scripts/e2e-full.ts",
+    "e2e:tron": "tsx scripts/e2e-full.tron.ts",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@b2binpay/defi-sdk": "^2.0.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@scure/bip39": "2.4.0",
+    "tronweb": "6.5.1",
+    "viem": "^2.57.13",
+    "zod": "^4.6.7"
+  },
+  "optionalDependencies": {
+    "@napi-rs/keyring": "2.1.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "@types/node": "^24.13.6",
+    "@vitest/coverage-v8": "^5.0.5",
+    "dotenv": "^18.0.9",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=24.16.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

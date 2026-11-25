@@ -1,0 +1,18 @@
+# build output
+/node_modules
+dist
+
+# environment
+.env
+.env.*
+!.env.example
+
+# local keystore (agent signing keys must never be committed)
+/keystore
+*.keystore.json
+
+# misc
+/.idea
+coverage/
+*.log
+.DS_Store
